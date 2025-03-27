@@ -1,4 +1,6 @@
-<h2> MakeWeb </h2>
+<div align="center">
+    <h1 style="font-size: 3em; font-weight: bold; margin: 20px 0;">MakeWeb</h1>
+</div>
 
 ![banner](https://raw.githubusercontent.com/MakeWebMX/MakeWebPrincipal/refs/heads/main/public/MakeWeb%20-%20Hero.webp)
 
