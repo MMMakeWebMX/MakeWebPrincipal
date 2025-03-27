@@ -1,10 +1,10 @@
 <h2> MakeWeb </h2>
 
-![banner](./public/MakeWeb Logo_MW.svg)
+![banner](https://raw.githubusercontent.com/MakeWebMX/MakeWebPrincipal/refs/heads/main/public/MakeWeb%20-%20Hero.webp)
 
 Main page of MakeWeb developed with Astro 5, TailWind, and Three.js
 
-![banner](./public/MakeWeb - Hero.webp)
+![[banner](./public/MakeWeb - Hero.webp)](https://raw.githubusercontent.com/MakeWebMX/MakeWebPrincipal/refs/heads/main/public/MakeWeb%20Logo_MW.svg)
 
 <h2><a src="https://img.icons8.com/?size=100&id=aJPLw-4jUCR3&format=png&color=000000" alt="linkedin-circled"/></a> Technologies</h2>
 
