@@ -1,0 +1,184 @@
+<div id="Cubo" class="fixed top-0 bottom-0 h-full w-full z-1">
+</div>
+
+<script>
+    import * as THREE from 'three';
+    import { FBXLoader } from 'three/examples/jsm/loaders/FBXLoader.js';
+
+    const container = document.querySelector('.relod');
+    const $Cubo = document.getElementById('Cubo');
+    //Variables
+    let w = window.innerWidth;
+    let h = window.innerHeight;
+    let currentIndex = 0;
+    let rotation = 0.01;
+    // iniicar la escena
+    const scene = new THREE.Scene();
+    // iniciar la camara
+    const camera = new THREE.PerspectiveCamera(75, w / h, 0.1, 1000);
+    camera.position.z = 100;
+    scene.add(camera);
+    // iniciar el canvas
+    //const canvas = document.createElement('three-canvas');
+    // iniciar el render
+    const renderer = new THREE.WebGLRenderer();
+    renderer.setSize(w, h);
+    //color de fondo
+    renderer.setClearColor(0x000000, 0);
+    $Cubo?.appendChild(renderer.domElement);
+    
+    const objAni: THREE.Mesh[] = [];
+    
+    const fbxLoader = new FBXLoader();
+    
+    fbxLoader.load('/OBJ/Islands.fbx', (object) => {
+        object.traverse((child) => {
+            if (child instanceof THREE.Mesh) {
+                const textureLoader = new THREE.TextureLoader();
+                const texture = textureLoader.load('/OBJ/Islands.png');
+                child.material.map = texture;
+                child.geometry.center();
+                child.position.set(0, 0, -500);
+                scene.add(object);
+                objAni.push(child);
+            }
+        });
+    });
+   
+    //luz
+    const light = new THREE.DirectionalLight(0xffffff, 3);
+    light.position.set(140, 55, 15);
+    scene.add(light);
+
+    //ver el helper donde hace el enfoque de luz
+    //const Helper = new THREE.DirectionalLightHelper(light, 5);
+    //scene.add(Helper);
+
+    // Animacion del entorno
+    function animate() {
+        requestAnimationFrame(animate);
+        if(rotation != 0)
+        objAni.forEach(object => {
+            object.rotation.z += rotation;
+        });
+        renderer.render(scene, camera);
+    }
+
+    animate();
+
+    function resize() {
+        h = window.innerHeight;
+        w = window.innerWidth;
+        camera.aspect = w / h;
+        camera.updateProjectionMatrix();
+        renderer.setSize(w, h);
+    }
+
+    window.addEventListener('wheel', (event) => {
+        if ($Cubo && !$Cubo.classList.contains('scrolling')) {
+            $Cubo.classList.add('scrolling');
+            setTimeout(() => {
+                $Cubo.classList.remove('scrolling');
+                if (event.deltaY > 0) {
+                    scrollToSection(currentIndex + 1);
+                } else {
+                    scrollToSection(currentIndex - 1);
+                }
+            }, 1000);
+        }
+    });
+
+        window.addEventListener('keydown', (event) => {
+            if (event.key === 'ArrowDown') {
+                scrollToSection(currentIndex + 1);
+            } else if (event.key === 'ArrowUp') {
+                scrollToSection(currentIndex - 1);
+            }
+        });
+
+    
+
+    function scrollToSection(index: number ) {
+        if (index >= 0 && index < 6) {
+            console.log(index);
+			currentIndex = index;
+            if (index == 0) {
+                (container as HTMLElement).style.transform = `translateY(0)`;
+                console.log("cure:" + currentIndex + (container as HTMLElement).style.transform);
+            } else {
+                (container as HTMLElement).style.transition = 'transform 1s';
+                (container as HTMLElement).style.transform = `translateY(-${currentIndex * h}px)`;
+                console.log("cure:" + currentIndex + (container as HTMLElement).style.transform);
+            }
+            
+            switch (index) {
+                case 0:
+                    moveOBJ(0, 0);
+                    rotation = 0.01;
+                    break;
+                case 1:
+                    moveOBJ(0, 70);
+                    rotation = 0;
+                    break;
+                case 2:
+                    moveOBJ(-200, 0);   
+                    rotation = 0;
+                    break;
+                case 3:
+                    moveOBJ(350, 0);   
+                    rotation = 0;
+
+                    break;
+                case 4:
+                    moveOBJ(0, -70);   
+                    rotation = 0;
+                    break;  
+                case 5:
+                    moveOBJ(0, -400); 
+                    rotation = 0;
+                    break;
+            }
+            renderer.render(scene, camera);
+		}
+	}
+
+    function moveOBJ(x: number, y: number) {
+        objAni.forEach(object => {
+            const duration = 1000; // duration of the animation in milliseconds
+            const startX = object.position.x;
+            const startY = object.position.y;
+            const deltaX = x - startX;
+            const deltaY = y - startY;
+            const startTime = performance.now();
+
+            function animatePosition(time: number) {
+                const elapsed = time - startTime;
+                const progress = Math.min(elapsed / duration, 1);
+                object.position.x = startX + deltaX * progress;
+                object.position.y = startY + deltaY * progress;
+
+                if (progress < 1) {
+                    requestAnimationFrame(animatePosition);
+                }
+            }
+
+            requestAnimationFrame(animatePosition);
+            object.position.set(x, y, -500);
+        });
+    
+    }
+
+    function inicialicePosition() {
+        objAni.forEach(object => {
+            object.position.set(0, 1000, -500);
+        });
+    
+    }
+
+    window.addEventListener('resize', () => {
+        resize();
+		scrollToSection(currentIndex);
+	});
+
+    window.addEventListener('resize', resize);
+</script>

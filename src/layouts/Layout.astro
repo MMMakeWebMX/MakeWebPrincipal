@@ -1,0 +1,36 @@
+---
+
+import LightBacgraound from '../components/LightBacgraound.astro';
+import Header from '../components/Header.astro';
+import Cubo from '../components/Cubo.astro';
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content="Empresa dedicada a inovar Sotfware" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="../MakeWeb_MM.svg"/>
+  
+		<title>{title}</title>
+	</head>
+	<body class="bg-[url('/blue-sky-background.webp')] bg-sky-500 overflow-hidden">
+		<Header />
+		<Cubo />
+		<slot />
+	</body>
+	
+	
+</html>
+
+
+<style is:global>
+    html {
+		font-family: Kepler-296, 'Kepler 296', sans-serif;
+		font-size: 16px;
+	}
+
+	
+</style>

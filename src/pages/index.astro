@@ -1,0 +1,57 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Card from '../components/Card.astro';
+import Footer from '../components/Footer.astro';
+import Text from '../components/Text.astro';
+
+---
+
+<Layout title="MAKE WEB">
+	<main class="relod">
+		
+		<section class="section flex h-screen w-screen flex-col relative items-center justify-center z-36">
+			<Text />
+			<div class="pt-28 pb-20  text-[30px]">
+				<spam class="relative border-4 inline-block before:absolute before:-inset-1 before:block before:-skew-y-3 before:bg-[#422f4b] md:text-[30px] z-0">
+					<a class="relative text-white ">Hacer Click,</a>
+					<a class="relative text-white ">Hacer Web,</a>
+					<a class="relative text-white ">Hacer Recuerdos.</a> 
+				</spam>
+			</div>
+			
+			<div class="justify-center shadow-xl pb-8 text-[#422f4b]">
+				<a class="border-2 border-[#422f4b] rounded-lg font-medium px-5 py-2 inline-block " href="/">View</a>
+			</div>
+			
+		</section>
+
+		<section class="section px-20 h-screen w-screen flex justify-center md:items-center z-36">
+			<Card title="Nosotros" body='<h1 class="text-white pt-2 text-[16px]"><strong class="underline decoration-[#e92210] text-[17px]">Somos una pareja</strong> de desarrolladores apasionados por crear soluciones web innovadoras mientras impulsamos el uso de nuevas tecnologías para maximizar el impacto en línea.</h1>' href="" />
+		</section>
+		<section class="section pr-20 h-screen w-screen flex justify-center md:justify-end md:items-center z-36">
+			<Card title="Servicios" body='<h1 class="text-white pt-2 text-[16px]">Ofrecemos soluciones innovadoras y personalizadas en desarrollo web, así como invitaciones creativas para todo tipo de celebraciones, asegurando un resultado calidad <strong class="text-[#e92210] text-[17px]">MAKEWEB</strong>.</h1>' href="" />
+		</section>
+		
+		<section class="section pl-20 h-screen w-screen flex justify-center md:justify-start md:items-center z-36">
+			<Card title="Contacto" body='<h1 class="text-white pt-2 text-[16px]">Déjanos transformar tus ideas en realidad. <strong> ¡Contáctanos hoy y descubre cómo podemos ayudarte a destacar!</strong></h1>' href="" /></Card>		
+		</section>
+		
+		<section class="section px-1 h-screen w-screen flex justify-center md:justify- md:items-center z-36">
+			<Card title="Tecnologias" body='<h1 class="text-white pt-2 text-[16px]"></Card>Dale un vistazo a las tecnologías que utilizamos en nuestros proyectos para maximizar el <strong class="underline decoration-[#e92210] text-[17px]">impacto</strong> y ofrecer experiencias <strong class="underline decoration-[#e92210] text-[17px]">innovadoras</strong> a nuestros clientes.</h1>' href="" /></Card>		
+		</section>
+		
+		<section class="section h-screen w-screen text-center overflow-hidden translate-y-0">
+			<Footer />
+		</section>
+		
+		
+	</main>
+	
+</Layout>
+
+<style>
+.section {
+	transition: transform 10s ease-in-out;
+}
+</style>
+

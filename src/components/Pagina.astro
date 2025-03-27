@@ -1,0 +1,27 @@
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        let currentPage = 1;
+        const totalPages = 6;
+        const scrollContainer = document.documentElement;
+
+        window.addEventListener('scroll', () => {
+            const scrollTop = scrollContainer.scrollTop;
+            const scrollHeight = scrollContainer.scrollHeight;
+            const clientHeight = scrollContainer.clientHeight;
+
+            if (scrollTop + clientHeight >= scrollHeight && currentPage < totalPages) {
+                currentPage++;
+                loadNextPage(currentPage);
+            }
+        });
+
+        function loadNextPage(page: number) {
+            // Logic to load the content for the next page
+            console.log(`Loading page ${page}`);
+            // Example: Fetch new content and append to the body
+            // fetch(`/page${page}.html`).then(response => response.text()).then(html => {
+            // 	document.body.insertAdjacentHTML('beforeend', html);
+            // });
+        }
+    });
+</script>

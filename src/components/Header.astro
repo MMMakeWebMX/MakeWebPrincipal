@@ -1,0 +1,65 @@
+<header class="flex flex-grow bg-opacity-15 shadow-md items-center w-full fixed top-0 justify-between z-40 text-white md:text-base 2xl:text-xl" >
+    <div class="flex flex-grow justify-start basis-0 pl-5">
+        <a href="/">
+            <img class="w-14 h-14 xl:w-16 sm:h-16" src="/MakeWeb_MM.svg" alt="MakeWeb Logo" />
+        </a>
+    </div>
+    
+    <div id="menu" class="lg:flex sm:flex-col hidden lg:flex-grow  lg:basis-5">
+        <ul class="flex justify-center [&>li>a]:inline-block [&>li>a]:px-2 [&>li>a]:py-1 ">
+            <li><a class="hover:rounded-lg hover:text-sky-500 hover:bg-white hover:underline decoration-sky-500" href="/">Inicio</a></li>
+            <li><a class="hover:rounded-lg hover:text-sky-500 hover:bg-white hover:underline decoration-sky-500" href="/">Nosotros</a></li>
+            <li><a class="hover:rounded-lg hover:text-sky-500 hover:bg-white hover:underline decoration-sky-500" href="#contacto">Servicios</a></li>
+            <li><a class="hover:rounded-lg hover:text-sky-500 hover:bg-white hover:underline decoration-sky-500" href="">Tecnologias</a></li>
+        </ul>
+    </div>
+    <div id="menu" class="lg:flex hidden flex-grow justify-end basis-5 pr-5">
+        <ul class="flex [&>li>a]:inline-block [&>li>a]:px-2 [&>li>a]:py-1 bg-white rounded-lg text-sky-500">
+            <li><a class="hover:rounded-lg hover:text-white hover:bg-sky-500 hover:underline decoration-white" href="/">Contacto</a></li>
+        </ul>
+    </div>
+
+    <div id="menu" class="menu flex lg:hidden justify-end" onclick="openMenu()">
+        <svg  
+            xmlns="http://www.w3.org/2000/svg"  
+            width="35"  
+            height="35"  
+            viewBox="0 0 24 24"  
+            fill="currentColor"  
+            stroke="currentColor"  
+            stroke-width="2"  
+            stroke-linecap="round"  
+            stroke-linejoin="round"  
+            class="icon icon-tabler icons-tabler-outline icon-tabler-menu-2">
+            <path 
+            stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 6l16 0" />
+            <path  d="M4 12l16 0" /><path d="M4 18l16 0" />
+        </svg>
+    </div>
+    
+</header>
+<script>
+    // Extend the Window interface to include openMenu
+    declare global {
+        interface Window {
+            openMenu: () => void;
+        }
+    }
+
+    function openMenu() {
+        console.log('openMenu');
+        let menu = document.getElementById('menu');
+        if(menu) {
+            if(menu.classList.contains('hidden')) {
+            menu.classList.remove('hidden');
+            menu.classList.add('flex', 'flex-col'); // Add flex-col for vertical layout
+            } else {
+            menu.classList.add('hidden');
+            menu.classList.remove('flex', 'flex-col'); // Remove flex-col when hiding
+            }
+        }
+    }
+
+    // Attach the function to the global window object
+    window.openMenu = openMenu;
+</script>
