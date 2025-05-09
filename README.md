@@ -27,3 +27,7 @@ Please contact [Mario](https://www.linkedin.com/in/it-mario-hernández/) if you 
 <h2>Comments</h2>
 
 There are comments in Spanish; you can send a message for more information.
+
+<h2>License</h2>
+
+This project is licensed under the terms of the MIT License. See the [MIT License](LICENSE)
