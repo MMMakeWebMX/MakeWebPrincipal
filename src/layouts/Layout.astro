@@ -1,5 +1,5 @@
 ---
-
+import { Analytics } from '@vercel/analytics/react';
 import LightBacgraound from '../components/LightBacgraound.astro';
 import Header from '../components/Header.astro';
 import Cubo from '../components/Cubo.astro';
@@ -20,6 +20,7 @@ const { title } = Astro.props;
 		<Header />
 		<Cubo />
 		<slot />
+		<Analytics />
 	</body>
 	
 	
