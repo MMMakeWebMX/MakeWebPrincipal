@@ -9,3 +9,4 @@ node_modules/.vite/deps/three_examples_jsm_loaders_FBXLoader__js.js.map
 node_modules/.vite/deps/three.js
 node_modules/.vite/deps/three.js.map
 node_modules
+.vercel
