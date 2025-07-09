@@ -10,3 +10,5 @@ node_modules/.vite/deps/three.js
 node_modules/.vite/deps/three.js.map
 node_modules
 .vercel
+.astro
+.vscode
